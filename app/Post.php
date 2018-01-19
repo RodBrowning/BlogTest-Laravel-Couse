@@ -9,6 +9,12 @@ class Post extends Model
     protected $fillable = [
 
     	'body',
-    	'slug'
+    	'slug',
+    	'category'
     ];
+
+    public function category()
+    {
+    	return $this->belongsTo('App\Category');
+    }
 }

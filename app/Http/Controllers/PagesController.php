@@ -8,9 +8,7 @@ class PagesController extends Controller{
 
 	public function getHome(){
 
-		$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
-		
-		
+		$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();		
 		return view('pages.home')->withPosts($posts);
 	}
 
