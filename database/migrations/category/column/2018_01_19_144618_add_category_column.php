@@ -14,6 +14,11 @@ class AddCategoryColumn extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->unsignedInteger('category_id')->nullable(true)->after('slug');
+
+            //Com o código abaixo deve ser especificado as colunas na função belongsTo() no model.
+            //Como está coluna esta sendo adicionada após a criação do model o mesmo deve ser apagado e recriado.
+            $table->foreign('category_id')->references('id')->on('categories');
+
         });
     }
 
