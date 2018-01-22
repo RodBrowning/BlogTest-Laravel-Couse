@@ -25,6 +25,9 @@ Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\PasswordController@reset');
 
+// Category Routes
+Route::resource('category','CategoryController',['except'=>['show']]);
+
 Route::get('blog/{slug}' , ['as' => 'blog.single', 'uses' => 'BlogController@getSingle']);
 Route::get('blog', ['uses'=>'BlogController@getIndex', 'as'=>'blog.index']);
 	

@@ -25,6 +25,7 @@
           </button>
           <div style="left: -75px;" class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <a href="{{ route('posts.index') }}" class="dropdown-item" >Posts</a>
+            <a href="{{ route('category.index') }}" class="dropdown-item" >Categories</a>
             <a class="dropdown-item" href="{{ route('logout') }}" >Logout</a>
           </div>
           @else
