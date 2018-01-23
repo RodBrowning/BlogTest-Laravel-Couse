@@ -18,8 +18,11 @@
 			{{ Form::label('title', 'Title:')}}
 			{{ Form::text('title', null, array('class'=>'form-control', 'required' =>'', 'maxlength'=>'255'))}}
 
-			{{ Form::label('slug', 'Slug:') }}
+			{{ Form::label('slug', 'Slug:',['class'=>'mt-2']) }}
 			{{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'maxlength' =>'255', 'minlength'=>'6')) }}
+
+			{{ Form::label('category_id','Select Category:',['class'=>'mt-2'])}}
+			{{ form::select('category_id', $categories, $post->catedory_id,['class'=>'form-control '])}}
 			
 			{{ Form::label('body', 'Body:', ['class'=>'mt-2'])}}
 			{{ Form::textarea('body', null, ['class'=>'form-control', 'required'=>''])}}

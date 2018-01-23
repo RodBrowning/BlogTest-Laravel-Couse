@@ -13,6 +13,10 @@
 				<dl>
 					<dt>URL:</dt>
 					<dd><a href="{{ route("blog.single",$post->slug) }}">{{ url("blog/".$post->slug) }}</a></dd>
+					<ul class="list-inline mt-3">
+						<li class="list-inline-item"><strong>Category:</strong></li>
+						<li class="list-inline-item">{{$post->category->name}}</li>
+					</ul>
 				</dl>
 				<div class="row ">
 					<dl class="col-md-6">
