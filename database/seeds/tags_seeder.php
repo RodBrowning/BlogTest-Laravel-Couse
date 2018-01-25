@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-
-class posts_seeder extends Seeder
+class tags_seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +11,6 @@ class posts_seeder extends Seeder
      */
     public function run()
     {
-   		
-    	factory(App\Post::class, 30)->create();
-    	
+        factory(App\Tag::class, 15)->create();
     }
 }
