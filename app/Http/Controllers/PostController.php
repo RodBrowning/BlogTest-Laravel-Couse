@@ -8,6 +8,7 @@ use App\Post;
 Use App\Category;
 use App\Http\Requests;
 use Session;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -35,8 +36,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $tags = Tag::orderBy('name','asc')->get();
         $categories = Category::all();
-        return view('posts.create')->withCategories($categories);
+        return view('posts.create')->withCategories($categories)->withTags($tags);
     }
 
     /**

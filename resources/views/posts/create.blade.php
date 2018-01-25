@@ -5,6 +5,7 @@
 @section('styles')
 	
 	{!! Html::style('css/parselyjs.css')!!}
+    {!! Html::style('css/chosen.css') !!}
 
 @endsection
 
@@ -25,9 +26,16 @@
     		{{ Form::label('category_id','Select category:',['class'=>'mt-1'])}}
     		<select name='category_id' class="form-control">
     			@foreach($categories as $category)
-    				<option value="{{$category->id}}">{{$category->name}}</option>
+    				<option value="{{$category->id}}">{{ucwords($category->name)}}</option>
     			@endforeach
     		</select>
+
+            {{ Form::label('tag_id','Select category:',['class'=>'mt-1'])}}
+            <select name='tag_id' class="form-control mult-box" multiple="multiple">
+                @foreach($tags as $tag)
+                    <option value="{{$tag->id}}">{{ucwords($tag->name)}}</option>
+                @endforeach
+            </select>
 
     		{{ Form::label('body', 'Post Body:', array('class' => 'mt-1'))}}
     		{{ Form::textarea('body', null, array('class' => 'form-control', 'placeholder'=>"Place the post's content here.", 'required' =>''))}}
@@ -45,5 +53,11 @@
 	{!! Html::script('js/parselyjs.js') !!}
 	{!! Html::script('js/i18n/pt-br.js') !!}
 
+    {!! Html::script('js/chosen.jquery.js') !!}
+    
+
+    <script type="text/javascript">
+        $('.mult-box').chosen();
+    </script>    
 
 @endsection

@@ -28,6 +28,9 @@ Route::post('password/reset', 'Auth\PasswordController@reset');
 // Category Routes
 Route::resource('category','CategoryController',['except'=>['show']]);
 
+// Tag Routes
+Route::resource('tag','TagController',['except'=>'create']);
+
 Route::get('blog/{slug}' , ['as' => 'blog.single', 'uses' => 'BlogController@getSingle']);
 Route::get('blog', ['uses'=>'BlogController@getIndex', 'as'=>'blog.index']);
 	
