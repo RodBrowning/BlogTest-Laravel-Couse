@@ -18,20 +18,20 @@
 		{!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '']) !!}
     		
     		{{ Form::label('title','Title:')}}
-    		{{ Form::text('title', null, array('class'=>'form-control', 'placeholder'=>"Place the post's title here.", 'required'=> '', 'maxlength'=>'255'))}}
+    		{{ Form::text('title', null, array('class'=>'form-control', 'placeholder'=>"Place the post's title here.", 'required'=> '', 'maxlength'=>'255', 'autofocus'=>''))}}
 
     		{{ Form::label('slug', 'Slug:', array('class' => 'mt-1')) }}
     		{{ Form::text('slug', null, array('class' => 'form-control', 'placeholder' => 'Set your slug\'s page here.', 'required' => '', 'minlength'=>"5", 'maxlength'=>"255")) }}
 
     		{{ Form::label('category_id','Select category:',['class'=>'mt-1'])}}
-    		<select name='category_id' class="form-control">
+    		<select name='category_id' class="form-control" required>
     			@foreach($categories as $category)
     				<option value="{{$category->id}}">{{ucwords($category->name)}}</option>
     			@endforeach
     		</select>
 
-            {{ Form::label('tag_id','Select category:',['class'=>'mt-1'])}}
-            <select name='tag_id' class="form-control mult-box" multiple="multiple">
+            {{ Form::label('tags[]','Select tags:',['class'=>'mt-1'])}}
+            <select name='tags[]' class="form-control mult-box" required multiple="multiple">
                 @foreach($tags as $tag)
                     <option value="{{$tag->id}}">{{ucwords($tag->name)}}</option>
                 @endforeach

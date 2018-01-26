@@ -256,6 +256,7 @@ input.chosen-search-input.default{
   width: 100%;
 }
 
+
 .chosen-container-multi .chosen-choices li {
   float: left;
   list-style: none;
@@ -321,6 +322,10 @@ input.chosen-search-input.default{
   height: 12px;
   background: url("chosen-sprite.png") -42px 1px no-repeat;
   font-size: 1px;
+}
+
+a.search-choice-close {
+    margin-top: 3em;
 }
 
 .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover {

@@ -7,6 +7,12 @@
 		<div class="col-md-6 offset-1">
 			<h1>{{$post->title}}</h1>			
 			<p class="lead">{{$post->body}}</p>
+			<hr>
+			<div class="tags">
+				@foreach($post->tags as $tag)					
+						<span class="badge badge-dark">{{$tag->name}}</span>					
+				@endforeach
+			</div>
 		</div>
 		<div class="col-md-5">
 			<div class="card bg-light p-4">

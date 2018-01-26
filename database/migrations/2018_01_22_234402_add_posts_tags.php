@@ -11,8 +11,9 @@ class AddPostsTags extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('posts_tags', function (Blueprint $table) {
+    {   
+        // A tabela intermediaria deve ter o mesmo nome dos seus model e em ordem alfabetica
+        Schema::create('post_tag', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger('post_id');

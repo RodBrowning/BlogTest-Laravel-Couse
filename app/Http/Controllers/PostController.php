@@ -50,6 +50,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //Validate data
+        //dd($request);
 
         $this->validate($request, array(
             'title'         => 'required|max:255',
@@ -68,6 +69,8 @@ class PostController extends Controller
         $post->body         = $request->body;
 
         $post->save();
+
+        $post->tags()->sync($request->tags);
 
         //Set a success message
 
@@ -108,8 +111,16 @@ class PostController extends Controller
         foreach($categories as $category){
             $cats[$category->id] = $category->name;
         }
+
+        $tags = Tag::all();
+        $tagsArray = [];
+
+        foreach ($tags as $tag) {
+            $tagsArray[$tag->id] = $tag->name;
+        }
+
         //Resirect to edit view with the variable array.
-        return view('posts.edit')->withPost($post)->withCategories($cats);
+        return view('posts.edit')->withPost($post)->withCategories($cats)->withTags($tagsArray);
     }
 
     /**
