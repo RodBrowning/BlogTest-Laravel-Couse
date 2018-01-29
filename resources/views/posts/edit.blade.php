@@ -25,8 +25,8 @@
 			{{ Form::label('category_id','Select Category:',['class'=>'mt-2'])}}
 			{{ Form::select('category_id', $categories, $post->catedory_id,['class'=>'form-control '])}}
 
-			{{ Form::label('tag','Select tags:',['class'=>'mt-2'])}}
-			{{ Form::select('tag[]',$tags, $post->tags,['class'=>'form-control multi-box', 'multiple'=>'multiple'])}}
+			{{ Form::label('tags','Select tags:',['class'=>'mt-2'])}}
+			{{ Form::select('tags[]',$tags, null,['class'=>'form-control multi-box', 'multiple'=>'multiple'])}}
 			
 			{{ Form::label('body', 'Body:', ['class'=>'mt-2'])}}
 			{{ Form::textarea('body', null, ['class'=>'form-control', 'required'=>''])}}
@@ -70,12 +70,7 @@
 	{!! Html::script('js/chosen.jquery.js')!!}
 
 	<script type="text/javascript">
-		$('.multi-box').chosen();
 		$('.multi-box').chosen().val({!! json_encode($post->tags()->getRelatedIds()) !!}).trigger('chosen:updated');
 		
-		
-		
-
-
 	</script>
 @endsection

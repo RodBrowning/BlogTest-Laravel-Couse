@@ -51,7 +51,7 @@ class PostController extends Controller
     {
         //Validate data
         //dd($request);
-
+        
         $this->validate($request, array(
             'title'         => 'required|max:255',
             'slug'          => 'required|min:5|max:255|alpha_dash|unique:posts,slug',
@@ -70,7 +70,9 @@ class PostController extends Controller
 
         $post->save();
 
-        $post->tags()->sync($request->tags);
+
+        $post->tags()->sync($request->tags, false);
+        // Second parameter is optional, it not overwrite previous tags, which not makes sense to use it here but it's for learning purposes.
 
         //Set a success message
 
@@ -161,6 +163,14 @@ class PostController extends Controller
         $post->body         = $request->input('body');
 
         $post->save();
+
+        // this if sttatment is necessary or the aplication won't work.
+        if (isset($request->tags)){
+            $post->tags()->sync($request->tags);    
+        }else{
+            $post->tags()->sync(array());
+        }
+        
 
         //create success message
         Session::flash('success','Your post was updated successfully!');

@@ -31,7 +31,7 @@
     		</select>
 
             {{ Form::label('tags[]','Select tags:',['class'=>'mt-1'])}}
-            <select name='tags[]' class="form-control mult-box" required multiple="multiple">
+            <select name='tags[]' class="form-control mult-box" required multiple>
                 @foreach($tags as $tag)
                     <option value="{{$tag->id}}">{{ucwords($tag->name)}}</option>
                 @endforeach
