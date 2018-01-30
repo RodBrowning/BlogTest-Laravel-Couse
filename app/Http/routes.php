@@ -41,6 +41,8 @@ Route::get('/','PagesController@getHome');
 
 Route::resource('posts','PostController');
 
+Route::post('comment/{post_id}',['as'=>'comment.store', 'uses'=>'CommentController@store']);
+
 
 /*Route::get('/', function () {
     return view('welcome');
