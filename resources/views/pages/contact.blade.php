@@ -7,20 +7,21 @@
             <div class="col-md-12">
                 <h1>Contact Me</h1>
                 <hr>
-                <form>
+                <form method="POST" action="{{url('contact')}}">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label name="email">Email:</label>
                         <input name="email" class="form-control" id="email">                        
                     </div>
                     <div class="form-group">
-                        <label name="Subject">Subject:</label>
-                        <input name="Subject" class="form-control" id="Subject">                        
+                        <label name="subject">Subject:</label>
+                        <input name="subject" class="form-control" id="Subject">                        
                     </div>
                     <div class="form-group">
-                        <label name="Message">Message:</label>
-                        <textarea name="Message" class="form-control" id="Message" placeholder="Type your massege here..."></textarea>                        
+                        <label name="message">Message:</label>
+                        <textarea name="message" class="form-control" id="Message" placeholder="Type your massege here..."></textarea>                        
                     </div>
-                    <input type="Subject" value="Send Message" class="btn btn-success">
+                    <input type="submit" value="Send Message" class="btn btn-success">
                 </form>
                 <div class="test"></div>
             </div>

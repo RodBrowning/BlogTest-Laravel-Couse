@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Post;
+use Session;
+use Mail;
 
 class PagesController extends Controller{
 
@@ -29,11 +33,37 @@ class PagesController extends Controller{
 
 
 	public function getContact(){
-		$numA = 140;
-		$numB = 30;
-		$sum = $numA + $numB;
-		return view('pages.contact')->with('total', $sum)->withA($numA)->withB($numB);
+
+		return view('pages.contact');
 		
+	}
+
+	public function postContact(Request $request){
+
+		//Validate data
+		$this->validate($request,[
+			'email' 	=> 'required|email',
+			'subject'	=> 'min:3',
+			'message'	=> 'min:10'
+		]);
+
+		$data = [
+			'email' 		=> $request->email,
+			'subject'		=> $request->subject,
+			'bodyMessage'	=> $request->message
+		];
+
+		Mail::send('mail.contact',$data, function($message) use ($data){
+			$message->from($data['email']);
+			$message->to('rodrigo.rod@here.com');
+			$message->subject($data['subject']);			
+		});
+
+		Session::flash('success', 'Messege sent successfully');
+
+		return redirect(url('/'));
+
+
 	}
 
 }
