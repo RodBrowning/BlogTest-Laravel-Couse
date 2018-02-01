@@ -13,7 +13,37 @@
 						<span class="badge badge-dark">{{$tag->name}}</span>					
 				@endforeach
 			</div>
-		</div>
+			<div class="commets-table mt-4">
+				@if(count($post->comments) >0)
+					<h4 class="mb-3">Comments <small>- {{count($post->comments)}} Total</small></h4>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Comment</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($post->comments as $comment)
+								<tr>
+									<th>{{$comment->id}}</th>
+									<td>{{substr($comment->name,0,10)}}{{strlen($comment->name)>10 ? "...":""}}</td>
+									<td>{{substr($comment->email,0,10)}}{{strlen($comment->email)>10 ? "...":""}}</td>
+									<td>{{substr($comment->comment,0,10)}}{{strlen($comment->comment)>10 ? "...":""}}</td>
+									<td>
+										<a href="" class=" btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></a>
+										<a href="" class=" btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+									</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
+				@endif
+			</div>
+		</div>		
 		<div class="col-md-5">
 			<div class="card bg-light p-4">
 				<dl>
