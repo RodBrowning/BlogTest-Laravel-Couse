@@ -34,8 +34,8 @@
 									<td>{{substr($comment->email,0,10)}}{{strlen($comment->email)>10 ? "...":""}}</td>
 									<td>{{substr($comment->comment,0,10)}}{{strlen($comment->comment)>10 ? "...":""}}</td>
 									<td>
-										<a href="" class=" btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></a>
-										<a href="" class=" btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+										<a href="{{route('comment.edit',$comment->id)}}" class=" btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></a>
+										<a href="{{route('comment.delete',$comment->id)}}" class=" btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
 									</td>
 								</tr>
 							@endforeach

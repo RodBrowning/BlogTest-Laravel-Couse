@@ -6,7 +6,7 @@
 	{!! Html::style('css/pagination.css') !!}
 	{!! Html::style('css/estilo_blog_page.css') !!}
 	<link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-	
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>	
 
 	<!--This is a validation css file-->
 	@yield('styles')

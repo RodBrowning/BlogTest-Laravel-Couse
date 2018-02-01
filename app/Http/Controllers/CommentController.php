@@ -10,24 +10,9 @@ use App\Http\Requests;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $this->middleWare('auth',['except'=>'store']);
     }
 
     /**
@@ -45,7 +30,7 @@ class CommentController extends Controller
             'comment' =>    'required|min:3'
         ]);
 
-        $post = Post::find('35');
+        $post = Post::find($id);
 
         $comment = new Comment;
 
@@ -61,16 +46,6 @@ class CommentController extends Controller
         return redirect()->route('blog.single',$post->slug);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -80,7 +55,8 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('comment.edit')->withComment($comment);
     }
 
     /**
@@ -92,7 +68,22 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,['comment'=>'required|min:3']);
+
+        $newComment = Comment::find($id);
+
+        $newComment->comment = $request->comment;
+        $newComment->update();
+
+        Session::flash('success','Comment updates successfully');
+
+        return redirect()->route('posts.show',$newComment->post_id);
+    }
+
+    public function delete($id)
+    {
+        $comment = Comment::find($id);
+        return view('comment.delete')->withComment($comment);
     }
 
     /**
@@ -103,6 +94,12 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $post_id = $comment->post->id;
+        $comment->delete();
+
+        Session::flash('success','Comment was deleted');
+
+        return redirect()->route('posts.show',$post_id);
     }
 }
