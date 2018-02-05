@@ -6,7 +6,8 @@
 	
 	{!! Html::style('css/parselyjs.css')!!}
     {!! Html::style('css/chosen.css') !!}
-
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    
 @endsection
 
 @section('content')
@@ -38,7 +39,7 @@
             </select>
 
     		{{ Form::label('body', 'Post Body:', array('class' => 'mt-1'))}}
-    		{{ Form::textarea('body', null, array('class' => 'form-control', 'placeholder'=>"Place the post's content here.", 'required' =>''))}}
+    		{{ Form::textarea('body', null, array('class' => 'form-control', 'placeholder'=>"Place the post's content here."))}}
 
     		{{ Form::submit('Create Post', array('class'=>'btn btn-success btn-lg btn-block',     'style'=>'margin-top:20px;'))}}
 
@@ -59,5 +60,12 @@
     <script type="text/javascript">
         $('.mult-box').chosen();
     </script>    
+
+    <script>tinymce.init({ 
+        selector:'textarea', 
+        menubar: false,
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+
+      });</script>
 
 @endsection
