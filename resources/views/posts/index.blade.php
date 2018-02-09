@@ -28,7 +28,7 @@
 					<tr>
 						<td class="align-middle">{{$post->id}}</td>
 						<td class="align-middle">{{substr($post->title, 0, 30)}}{{ strlen($post->title) > 30 ? "...": "" }}</td>
-						<td class="align-middle">{{substr($post->body, 0, 50)}}{{ strlen($post->body) > 50 ? "...": "" }}</td>
+						<td class="align-middle">{{strip_tags(substr($post->body, 0, 50))}}{{ strip_tags(strlen($post->body)) > 50 ? "...": "" }}</td>
 						<td class="align-middle">{{substr($post->slug, 0 , 10)}}{{ strlen($post->slug) > 10 ? "..." : ""}}</td>
 						<td class="align-middle">{{date('M j, Y', strtotime($post->created_at))}}</td>
 						<td class="align-middle">

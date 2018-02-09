@@ -7,6 +7,9 @@
 	
 	{!! Html::style('css/parselyjs.css')!!}	
 	{!! Html::style('css/chosen.css') !!}
+	
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  	<script>tinymce.init({ selector:'textarea', menubar: false, plugins: 'code' });</script>
 
 @endsection
 

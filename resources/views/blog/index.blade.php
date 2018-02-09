@@ -18,7 +18,7 @@
 		<div class="row">
 			<div class="col-md-8 offset-2">
 				<h2>{{ $post->title }}</h2>
-				<p>{{ substr($post->body, 0, 250) }}{{ strlen($post->body) > 250 ? '...':'' }}</p>
+				<p>{{ strip_tags(substr($post->body, 0, 250)) }}{{ strlen(strip_tags($post->body)) > 250 ? '...':'' }}</p>
 				<!-- Date on the right -->
 				<div class="col-md-6 offset-6">
 					<p class="text-right">

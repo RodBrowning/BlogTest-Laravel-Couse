@@ -23,7 +23,7 @@
 				@foreach($posts as $post)
 					<div class="post" style="margin-bottom: 20px;">
 						<h3>{{ $post->title }}</h3>
-						<p>{{ substr($post->body, 0, 300) }}{{ strlen($post->body) > 300 ? '...' : '' }}</p>
+						<p>{{ strip_tags(substr($post->body, 0, 300)) }}{{strlen( strip_tags($post->body)) > 300 ? '...' : '' }}</p>
 						{{ Html::linkRoute('blog.single','Read More',$post->slug,['class'=>'btn btn-primary'])}}
 					</div>
 					<hr class="my-4">
